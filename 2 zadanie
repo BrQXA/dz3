@@ -1,0 +1,25 @@
+/*Напишите рекурсивную процедуру для перевода числа из двоичной системы счисления в десятичную.*/
+#include <iostream>
+using namespace std;
+int perevod(int N) {
+    setlocale(LC_ALL, "Russian");
+    static int i(-1);
+    int a(0);
+    if (N == 0)
+        return 0;
+    else {
+        i++;
+        cout << i << ";" << N << ";" << (N % 10) * (1 << i) << endl;
+        a = (N % 10) * (1 << i) + perevod(N / 10);
+    }
+    return a;
+}
+void main() {
+    setlocale(LC_ALL, "Russian");
+    int num;
+    int p;
+    cout << "Введите число: ";
+    cin >> num;
+    p = perevod(num);
+    cout << p << endl;
+}
